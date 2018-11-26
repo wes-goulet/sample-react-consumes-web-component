@@ -1,28 +1,42 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      menuIsOpen: false
+    };
+  }
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+          <wc-menu-button
+            is-open={this.state.menuIsOpen}
+            ref={menuButton => {
+              if (menuButton) {
+                menuButton.isOpenChangedFunc = this.handleMenuOpenChanged;
+              }
+            }}
+          />
+          <p>React app consuming a web component</p>
+          <p>The menu is {this.state.menuIsOpen ? "open" : "closed"}</p>
         </header>
+        <footer>
+          <a href="https://github.com/wes566/sample-react-consumes-web-component">
+            <img width="50" src={logo} alt="logo" />
+          </a>
+        </footer>
       </div>
     );
   }
+
+  handleMenuOpenChanged = isOpen => {
+    this.setState({ ...this.state, menuIsOpen: isOpen });
+  };
 }
 
 export default App;
