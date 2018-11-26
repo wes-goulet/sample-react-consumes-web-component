@@ -8,23 +8,13 @@ The [master](https://github.com/wes566/sample-react-consumes-web-component/tree/
 
 ## Steps to consume the web component in react app
 
-1. NPM install the web component
+1. Add a script tag in the [index.html](public/index.html) file.
 
-```bash
-npm install wc-menu-button --save
+```html
+<script src="https://unpkg.com/wc-menu-button/dist/wc-menu-button.js"></script>
 ```
 
-2. Add a call to `defineCustomElements` in the [index.js](src/index.js) file.
-
-```js
-import { defineCustomElements } from "test-components/dist/loader";
-.
-.
-.
-defineCustomElements(window);
-```
-
-3. Add the element to your TSX
+2. Add the element to your TSX
 
 ```js
 render() {
