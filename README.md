@@ -25,3 +25,5 @@ render() {
   );
 }
 ```
+
+This is simplified, to see how to get a ref to the web component (so you can listen to events or set properties) see [the source code](src/App.js).
